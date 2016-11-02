@@ -125,14 +125,14 @@ module express =
         abstract send: body: obj -> Response
         abstract json: body: obj -> Response
         abstract jsonp: body: obj -> Response
-        abstract send: status: float * ?body: obj -> Response
-        abstract json: status: float * ?body: obj -> Response
-        abstract jsonp: status: float * ?body: obj -> Response
+        abstract send: status: int * ?body: obj -> Response
+        abstract json: status: int * ?body: obj -> Response
+        abstract jsonp: status: int * ?body: obj -> Response
         abstract headersSent: bool with get, set
         abstract locals: obj with get, set
         abstract charset: string with get, set
-        abstract status: code: float -> Response
-        abstract sendStatus: code: float -> Response
+        abstract status: code: int -> Response
+        abstract sendStatus: code: int -> Response
         abstract links: links: obj -> Response
         abstract sendFile: path: string -> unit
         abstract sendFile: path: string * options: obj -> unit
@@ -161,8 +161,8 @@ module express =
         abstract cookie: name: string * ``val``: obj -> Response
         abstract location: url: string -> Response
         abstract redirect: url: string -> unit
-        abstract redirect: status: float * url: string -> unit
-        abstract redirect: url: string * status: float -> unit
+        abstract redirect: status: int * url: string -> unit
+        abstract redirect: url: string * status: int -> unit
         abstract render: view: string * ?options: obj * ?callback: Func<Error, string, unit> -> unit
         abstract render: view: string * ?callback: Func<Error, string, unit> -> unit
 
@@ -209,9 +209,9 @@ module express =
         abstract configure: env0: string * env1: string * env2: string * env3: string * env4: string * fn: Function -> Application
         abstract render: name: string * ?options: obj * ?callback: Func<Error, string, unit> -> unit
         abstract render: name: string * callback: Func<Error, string, unit> -> unit
-        abstract listen: port: float * hostname: string * backlog: float * ?callback: Function -> http_types.Server
-        abstract listen: port: float * hostname: string * ?callback: Function -> http_types.Server
-        abstract listen: port: float * ?callback: Function -> http_types.Server
+        abstract listen: port: int * hostname: string * backlog: float * ?callback: Function -> http_types.Server
+        abstract listen: port: int * hostname: string * ?callback: Function -> http_types.Server
+        abstract listen: port: int * ?callback: Function -> http_types.Server
         abstract listen: path: string * ?callback: Function -> http_types.Server
         abstract listen: handle: obj * ?listeningListener: Function -> http_types.Server
         abstract route: path: string -> IRoute
